@@ -9,11 +9,23 @@
         <GroupBox Header="Liczba wierzchołków" HorizontalAlignment="Left" Margin="10,26,0,0" VerticalAlignment="Top" Height="69" Width="191">
             <Slider x:Name="Slider1" Margin="10,10,-3.4,0" VerticalAlignment="Top" Height="28" Maximum="15" Interval="1" Value="8" TextOptions.TextHintingMode="Animated" SmallChange="1" Minimum="3" IsSnapToTickEnabled="True"/>
         </GroupBox>
-        <Border BorderBrush="Black" BorderThickness="1" Margin="233,26,0,0" Width="402" Height="402" VerticalAlignment="Top" HorizontalAlignment="Left">
-            <Canvas x:Name="GraphCanvas" Width="400" Height="400" HorizontalAlignment="Left" VerticalAlignment="Top" Background="#FFFFDCDC"/>
+        <Border BorderBrush="Black" BorderThickness="1" Margin="233,26,0,0" Width="252" Height="252" VerticalAlignment="Top" HorizontalAlignment="Left">
+            <Canvas x:Name="GraphCanvas" Width="250" Height="250" HorizontalAlignment="Left" VerticalAlignment="Top" Background="#FFFFDCDC"/>
         </Border>
-        <Border BorderBrush="Black" BorderThickness="1" Margin="661,26,0,0" Width="401.6" Height="401.6" VerticalAlignment="Top" HorizontalAlignment="Left">
-            <Canvas x:Name="GraphCanvas1" Width="400" Height="400" HorizontalAlignment="Left" VerticalAlignment="Top" Background="#FFFFDCDC"/>
+        <Border BorderBrush="Black" BorderThickness="1" Margin="237,300,0,0" Width="252" Height="252" VerticalAlignment="Top" HorizontalAlignment="Left">
+            <Canvas x:Name="GraphCanvas1" Height="250" VerticalAlignment="Top" Background="#FFFFDCDC" Margin="0" RenderTransformOrigin="-0.27,1.079" HorizontalAlignment="Right" Width="250"/>
+        </Border>
+        <Border BorderBrush="Black" BorderThickness="1" Margin="545,26,0,0" Width="252" Height="252" VerticalAlignment="Top" HorizontalAlignment="Left" RenderTransformOrigin="0.513,0.501">
+            <Canvas x:Name="GraphCanvas2" Width="250" Height="250" HorizontalAlignment="Left" VerticalAlignment="Top" Background="#FFFFDCDC"/>
+        </Border>
+        <Border BorderBrush="Black" BorderThickness="1" Margin="545,300,0,0" Width="252" Height="252" VerticalAlignment="Top" HorizontalAlignment="Left">
+            <Canvas x:Name="GraphCanvas3" Height="250" VerticalAlignment="Top" Background="#FFFFDCDC" Margin="0" RenderTransformOrigin="-0.27,1.079" HorizontalAlignment="Right" Width="250"/>
+        </Border>
+        <Border BorderBrush="Black" BorderThickness="1" Margin="857,26,0,0" Width="252" Height="252" VerticalAlignment="Top" HorizontalAlignment="Left" RenderTransformOrigin="0.513,0.501">
+            <Canvas x:Name="GraphCanvas4" Width="250" Height="250" HorizontalAlignment="Left" VerticalAlignment="Top" Background="#FFFFDCDC"/>
+        </Border>
+        <Border BorderBrush="Black" BorderThickness="1" Margin="857,300,0,0" Width="252" Height="252" VerticalAlignment="Top" HorizontalAlignment="Left">
+            <Canvas x:Name="GraphCanvas5" Height="250" VerticalAlignment="Top" Background="#FFFFDCDC" Margin="0" RenderTransformOrigin="-0.27,1.079" HorizontalAlignment="Right" Width="250"/>
         </Border>
         <GroupBox Header="Prawdopodobieństwo" HorizontalAlignment="Left" Margin="10,100,0,0" VerticalAlignment="Top" Height="73" Width="191">
             <Slider x:Name="Slider2" Margin="10,10,-3.4,0" VerticalAlignment="Top" Height="28" Maximum="100" Interval="1" Value="50" IsSnapToTickEnabled="True"/>

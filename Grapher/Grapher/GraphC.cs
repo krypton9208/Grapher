@@ -11,6 +11,7 @@ namespace Grapher
     {
         
         public List<Point> punkty = new List<Point>();
+
         public List<List<int>> relacje = new List<List<int>>();
         public int LiczbaWierzcholkow { get; set; }
         public double PrawdopodobienstwoPolaczen { get; set; }
