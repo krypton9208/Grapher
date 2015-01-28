@@ -3,11 +3,11 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="MainWindow" Height="686" Width="1264.2" WindowState="Maximized" WindowStartupLocation="CenterScreen" VerticalContentAlignment="Stretch">
     <Grid x:Name="Grid1" Margin="0,0,-403.6,-592.2">
-        <Button Content="Wczytaj" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="75" Click="Button_Click_1" Margin="0,1,0,1230"/>
-        <Button Content="Zapisz" HorizontalAlignment="Left" Margin="80,0,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button Content="Wczytaj" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="75" Click="Button_Click_1" Margin="0,0,0,1230"/>
+        <Button Content="Zapisz" HorizontalAlignment="Left" Margin="80,0,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click_2"/>
         <Button Content= "Utworz" HorizontalAlignment="Left" Margin="10,178,0,0" VerticalAlignment="Top" Width="191" Click="Button_Click"/>
         <GroupBox Header="Liczba wierzchołków" HorizontalAlignment="Left" Margin="10,26,0,0" VerticalAlignment="Top" Height="69" Width="191">
-            <Slider x:Name="Slider1" Margin="10,10,-3.4,0" VerticalAlignment="Top" Height="28" Maximum="100" Interval="1" Value="50" TextOptions.TextHintingMode="Animated" SmallChange="1" Minimum="3" IsSnapToTickEnabled="True"/>
+            <Slider x:Name="Slider1" Margin="10,10,-3.4,0" VerticalAlignment="Top" Height="28" Maximum="15" Interval="1" Value="8" TextOptions.TextHintingMode="Animated" SmallChange="1" Minimum="3" IsSnapToTickEnabled="True"/>
         </GroupBox>
         <Border BorderBrush="Black" BorderThickness="1" Margin="233,26,0,0" Width="402" Height="402" VerticalAlignment="Top" HorizontalAlignment="Left">
             <Canvas x:Name="GraphCanvas" Width="400" Height="400" HorizontalAlignment="Left" VerticalAlignment="Top" Background="#FFFFDCDC"/>

@@ -14,16 +14,18 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using ReadWriteCsv;
 using System.Threading;
+using System.IO;
 
 namespace Grapher
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for MainWindow.xaml       
     /// </summary>
     /// 
 
     public partial class MainWindow : Window
     {
+        List<List<int>> generated = new List<List<int>>(); 
         public MainWindow()
         {
             InitializeComponent();
@@ -94,20 +96,25 @@ namespace Grapher
             g.GenerateCirclePoints(GraphCanvas.ActualWidth, GraphCanvas.ActualHeight);
             foreach (Point point in g.punkty)
             {
-                var ellipse = new Ellipse() { Width = 15, Height = 15, Stroke = new SolidColorBrush(Colors.Red), Fill = new SolidColorBrush(Colors.Red) };
-                Canvas.SetLeft(ellipse, point.X - 7.5);
-                Canvas.SetTop(ellipse, point.Y - 7.5);
+                var ellipse = new Ellipse() { Width = 30, Height = 30, Stroke = new SolidColorBrush(Colors.Red), Fill = new SolidColorBrush(Colors.Red) };
+                Canvas.SetLeft(ellipse, point.X - 15);
+                Canvas.SetTop(ellipse, point.Y - 15);
                 GraphCanvas.Children.Add(ellipse);
 
             }
+            //generated.AddRange(generated.AddRange(g.punkty.Count));
             for (int i = 0; i < g.punkty.Count; i++)
             {
+                
                 for (int j = 0; j < g.punkty.Count; j++)
                 {
+                    
                     if ((g.PrawdopodobienstwoPolaczen > GetRandomNumer) && (i!=j ))
                     {
                         CreateLine(g.punkty[i], g.punkty[j]);
+                        //generated[i].Add(1);
                     }
+                    //generated[i].Add(0);
                 }
             }
             
@@ -129,9 +136,9 @@ namespace Grapher
                 w.GenerateCirclePoints(GraphCanvas.ActualWidth, GraphCanvas.ActualHeight);
                 foreach (Point point in w.punkty)
                 {
-                    var ellipse = new Ellipse() { Width = 15, Height = 15, Stroke = new SolidColorBrush(Colors.Red), Fill = new SolidColorBrush(Colors.Red) };
-                    Canvas.SetLeft(ellipse, point.X - 7.5);
-                    Canvas.SetTop(ellipse, point.Y - 7.5);
+                    var ellipse = new Ellipse() { Width = 30, Height = 30, Stroke = new SolidColorBrush(Colors.Red), Fill = new SolidColorBrush(Colors.Red) };
+                    Canvas.SetLeft(ellipse, point.X - 15);
+                    Canvas.SetTop(ellipse, point.Y - 15);
                     GraphCanvas.Children.Add(ellipse);
 
                 }
@@ -192,6 +199,26 @@ namespace Grapher
 
             }
             return t;
+        }
+
+        private async void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+
+            Microsoft.Win32.SaveFileDialog dlg = new Microsoft.Win32.SaveFileDialog();
+
+            dlg.DefaultExt = ".csv";
+            dlg.Filter = "CSV Files (*.csv)|*.csv";
+            dlg.InitialDirectory = System.IO.Path.GetDirectoryName(System.Diagnostics.Process.GetCurrentProcess().MainModule.FileName);
+            Nullable<bool> result = dlg.ShowDialog();
+            if (result == true)
+            {
+                string filename = dlg.FileName;
+                string csv = String.Join(",", generated.Select(x => x.ToString()).ToArray());
+                using (StreamWriter outfile = new StreamWriter(filename, true))
+                {
+                    await outfile.WriteAsync(csv.ToString());
+                }
+            }
         }
 
     }
