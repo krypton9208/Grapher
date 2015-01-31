@@ -98,7 +98,7 @@ namespace Grapher
             foreach (Point point in g.punkty)
             {
                 var ellipse = new Ellipse() { Width = 30, Height = 30, Stroke = new SolidColorBrush(Colors.Red), Fill = new SolidColorBrush(Colors.Red) ,Tag = t.ToString() };
-                ellipse.Tag
+                //ellipse.Tag
                 Canvas.SetLeft(ellipse, point.X - 15);
                 Canvas.SetTop(ellipse, point.Y - 15);
                 
