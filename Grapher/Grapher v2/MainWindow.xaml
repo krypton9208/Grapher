@@ -17,28 +17,28 @@
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
         <Button Content="Wczytaj" Name="BtnLoad" Grid.Row="0" Grid.ColumnSpan="2" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75"/>
-        <Button Content="Zapisz" Name="BtnSave" Grid.Row="0" Grid.ColumnSpan="2" Grid.Column="0" HorizontalAlignment="Left" Margin="80,0,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button Content="Zapisz" Name="BtnSave" Grid.Row="0" Grid.ColumnSpan="2" Grid.Column="0" HorizontalAlignment="Left" Margin="80,0,0,0" VerticalAlignment="Top" Width="75" Click="BtnSave_Click"/>
         <GroupBox Header="Edges" Height="50" Grid.Row="1" Grid.Column="0" BorderBrush="Black" HorizontalContentAlignment="Left" VerticalContentAlignment="Top"  Margin="0,0" HorizontalAlignment="Right" Width="150" VerticalAlignment="Top">
-            <Slider Name="VertexSlider"  Width="Auto" Height="20" HorizontalAlignment="Stretch" Maximum="15" Value="7" Minimum="3" VerticalAlignment="Top" Margin="5,5,5,0" Interval="1" SmallChange="1" SelectionStart="3" AutoToolTipPrecision="1" TextOptions.TextHintingMode="Animated" IsSnapToTickEnabled="True" SelectionEnd="15"></Slider>
+            <Slider Name="VerticesSlider"  Width="Auto" Height="20" HorizontalAlignment="Stretch" Maximum="15" Value="9" Minimum="3" VerticalAlignment="Top" Margin="5,5,5,0" Interval="1" SmallChange="1" SelectionStart="3" AutoToolTipPrecision="1" TextOptions.TextHintingMode="Animated" IsSnapToTickEnabled="True" SelectionEnd="15"></Slider>
         </GroupBox>
         <GroupBox Header="Propability" Height="50" Grid.Row="2" Grid.Column="0" Margin="0,0,0,0" BorderBrush="Black" VerticalAlignment="Top">
-            <Slider Name="PropabilitySlider" Width="Auto" Height="20" HorizontalAlignment="Stretch" Maximum="100" Value="50" Minimum="1" VerticalAlignment="Top" Margin="5,5,5,0" IsSnapToTickEnabled="True" SmallChange="1"></Slider>
+            <Slider Name="PropabilitySlider" Width="Auto" Height="20" HorizontalAlignment="Stretch" Maximum="99" Value="50" Minimum="1" VerticalAlignment="Top" Margin="5,5,5,0" IsSnapToTickEnabled="True" SmallChange="1"></Slider>
         </GroupBox>
         <GroupBox Header="Values" Grid.Row="3" Height="70" Grid.Column="0" Margin="0,0,0,0" BorderBrush="Black" VerticalAlignment="Top">
             <StackPanel Name="Panel" Margin="0"  Height="50">
                 <TextBlock Text="Vertices: " VerticalAlignment="Top" Margin="5,0" HorizontalAlignment="Left" Width="50" ></TextBlock>
-                <TextBlock Name="VerticlesValue" Text="{Binding Value, ElementName=VertexSlider}" Width="30" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,-15,0,0"/>
+                <TextBlock Name="VerticlesValue" Text="{Binding Value, ElementName=VerticesSlider}" Width="30" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,-15,0,0"/>
                 <TextBlock Text="Propability" HorizontalAlignment="Left" Width="60" Margin="5, 10"></TextBlock>
                 <TextBlock Name="PropabilityValue" Text="{Binding Value, ElementName=PropabilitySlider}" HorizontalAlignment="Right" Width="30" Margin="0,-33, 0,0" Height="18"></TextBlock>
             </StackPanel>
         </GroupBox>
         <GroupBox Grid.Column="0" Grid.Row="4" Height="60" Margin="0, 0, 0,0" Width="150" HorizontalAlignment="Left" VerticalAlignment="Top" Header="Type"  BorderBrush="Black">
             <StackPanel Height="40" Margin="0, 4">
-                <RadioButton  Content="Circle"/>
-                <RadioButton Content="Rectangle"/>
+                <RadioButton  Content="Circle" IsChecked="True"  GroupName="TypeOfGraph"/>
+                <RadioButton Content="Rectangle" GroupName="TypeOfGraph"/>
             </StackPanel>
         </GroupBox>
-        <Button x:Name="GenerateButton" Grid.Column="0" Grid.Row="5" HorizontalAlignment="Center" VerticalAlignment="Top" Width="100" Height="20" Margin="0, 0, 0,0"  Content="Generate"/>
+        <Button x:Name="GenerateButton" Grid.Column="0" Grid.Row="5" HorizontalAlignment="Center" VerticalAlignment="Top" Width="100" Height="20" Margin="0, 0, 0,0"  Content="Generate" Click="GenerateButton_Click"/>
 
         <Grid Grid.Row="1" Margin="0,0.0,0,0" Grid.RowSpan="6" Grid.Column="1" >
             <Grid.ColumnDefinitions>
@@ -51,10 +51,10 @@
                 <RowDefinition/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
-            <Canvas  Grid.Column="0" Grid.Row="0 " MinWidth="150" MinHeight=" 84"  Margin="10,10,24,40.4"  Background="LightSteelBlue" SizeChanged="Canvas_SizeChanged"/>
-            <Canvas  Grid.Column="0" Grid.Row="1 " MinWidth="150" MinHeight="84"  Margin="10,9.6,24,40.8"  Background="LightSteelBlue"/>
-            <Canvas  Grid.Column="2" Grid.Row="0 " MinWidth="150" MinHeight="84"  Margin="10,10,24,42.4"  Background="LightSteelBlue"/>
-            <Canvas  Grid.Column="2" Grid.Row="1 " MinWidth="150" MinHeight="84"  Margin="10,9.6,24,42.8"  Background="LightSteelBlue"/>
+            <Canvas Name="Canvas1" Grid.Column="0" Grid.Row="0 " MinWidth="150" MinHeight=" 84"  Margin="10,10,24,40.4"  Background="LightSteelBlue"/>
+            <Canvas Name="Canvas2" Grid.Column="0" Grid.Row="1 " MinWidth="150" MinHeight="84"  Margin="10,9.6,24,40.8"  Background="LightSteelBlue"/>
+            <Canvas Name="Canvas3" Grid.Column="2" Grid.Row="0 " MinWidth="150" MinHeight="84"  Margin="10,10,24,42.4"  Background="LightSteelBlue"/>
+            <Canvas Name="Canvas4" Grid.Column="2" Grid.Row="1 " MinWidth="150" MinHeight="84"  Margin="10,9.6,24,42.8"  Background="LightSteelBlue"/>
         </Grid>
     </Grid>
 
