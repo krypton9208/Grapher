@@ -4,6 +4,7 @@ using System.Diagnostics.Eventing.Reader;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Media.Animation;
 
 namespace Grapher_v2
@@ -15,6 +16,8 @@ namespace Grapher_v2
             Circle,
             Rectangle
         };
+
+        private List<Point> defaultsSquarePoints = new List<Point>();
         public List<Verticle> Verticles = new List<Verticle>();
         public int VerticesNumber { get; set; }
         public double Propability { get; set; }
@@ -28,6 +31,37 @@ namespace Grapher_v2
             TypeOfGraph = type;
             MaxX = x;
             MaxY = y;
+        }
+
+        public Graph(int vert, Graphs type, double x, double y, int[,] relations)
+        {
+            VerticesNumber = vert;
+            Propability = 0;
+            TypeOfGraph = type;
+            MaxX = x;
+            MaxY = y;
+            if (TypeOfGraph == Graphs.Circle)
+            {
+                GraphOnCirle();
+            }
+            else
+            {
+                AddDefaultPoints();
+                GraphOnRectangle();
+            }
+            int i = 0;
+            foreach (var item in Verticles)
+            {
+
+                for (int j = 0; j < vert; j++)
+                {
+                    if (relations[i, j] == 1)
+                    {
+                        item.AddRelations(j);
+                    }
+                }
+                i++;
+            }
         }
 
         private void GraphOnCirle()
@@ -70,7 +104,13 @@ namespace Grapher_v2
         }
         private void GraphOnRectangle()
         {
-
+            double max = 0;
+            if (MaxX >= MaxY) max = MaxY;
+            else if (MaxY >= MaxX) max = MaxX;
+            for (int i = 0; i < VerticesNumber; i++)
+            {
+                Verticles.Add(new Verticle(defaultsSquarePoints[i].X * max, defaultsSquarePoints[i].Y * max));
+            }
         }
 
         private void GenerateRelations()
@@ -78,9 +118,9 @@ namespace Grapher_v2
 
             foreach (var item in Verticles)
             {
-                for (int i = 0; i < Verticles.Count ; i++)
+                for (int i = 0; i < Verticles.Count; i++)
                 {
-                    if (Propability >= GetRandomNumer )
+                    if (Propability >= GetRandomNumer)
                     {
 
                         int t = GetRandomNumberInt;
@@ -111,6 +151,7 @@ namespace Grapher_v2
             }
             else if (TypeOfGraph == Graphs.Rectangle)
             {
+                AddDefaultPoints();
                 GraphOnRectangle();
                 GenerateRelations();
             }
@@ -118,6 +159,25 @@ namespace Grapher_v2
 
         }
 
+        private void AddDefaultPoints()
+        {
+                defaultsSquarePoints.Add(new Point(0.9,0.9));
+                defaultsSquarePoints.Add(new Point(0.9, 0.1));
+                defaultsSquarePoints.Add(new Point(0.1,0.1));
+                defaultsSquarePoints.Add(new Point(0.1,0.9));
+                defaultsSquarePoints.Add(new Point(0.5,0.5));
+                defaultsSquarePoints.Add(new Point(0.9, 0.5));
+                defaultsSquarePoints.Add(new Point(0.1, 0.5));
+                defaultsSquarePoints.Add(new Point(0.5, 0.1));
+                defaultsSquarePoints.Add(new Point(0.5, 0.9));
+                defaultsSquarePoints.Add(new Point(0.75, 0.75));
+                defaultsSquarePoints.Add(new Point(0.75, 0.25));
+                defaultsSquarePoints.Add(new Point(0.25, 0.25));
+                defaultsSquarePoints.Add(new Point(0.25, 0.75));
+            
+        }
+
 
     }
+    
 }
