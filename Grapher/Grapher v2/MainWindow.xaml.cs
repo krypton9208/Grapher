@@ -198,7 +198,7 @@ namespace Grapher_v2
                 Graph g2 = new Graph(counter, Graph.Graphs.Rectangle, Canvas3.ActualWidth, Canvas3.ActualHeight, GenerateRelationsFromString(text, counter));
                 Graphes.Add(g2);
                 DrawGraph(Canvas3, g2);
-
+                
                 
                 file.Close();
 
