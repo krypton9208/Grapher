@@ -33,7 +33,7 @@ namespace Grapher_v2
             MaxY = y;
         }
 
-        public Graph(int vert, Graphs type, double x, double y, int[,] relations)
+        public Graph(int vert, Graphs type, double x, double y, int[,] relations, int o)
         {
             VerticesNumber = vert;
             Propability = 0;
@@ -50,18 +50,52 @@ namespace Grapher_v2
                 GraphOnRectangle();
             }
             int i = 0;
-            foreach (var item in Verticles)
+            if (o == 1)
             {
-
-                for (int j = 0; j < vert; j++)
+                foreach (var item in Verticles)
                 {
-                    if (relations[i, j] == 1)
+
+                    for (int j = 0; j < vert; j++)
                     {
-                        item.AddRelations(j);
+                        if (relations[i, j] == 1)
+                        {
+                            item.AddRelations(j);
+                        }
                     }
+                    i++;
                 }
-                i++;
+
             }
+            else if(o == 0)
+            {
+                foreach (var item in Verticles)
+                {
+
+                    for (int j = 0; j < vert; j++)
+                    {
+                        if (relations[i, j] == 0)
+                        {
+                            item.AddRelations(j);
+                        }
+                    }
+                    i++;
+                }
+            }
+            else
+            {
+                foreach (var item in Verticles)
+                {
+
+                    for (int j = 0; j < vert; j++)
+                    {
+                        
+                         item.AddRelations(j);
+                       
+                    }
+                    i++;
+                }
+            }
+            
         }
 
         private void GraphOnCirle()
