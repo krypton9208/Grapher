@@ -20,7 +20,7 @@
         <Button Content="Zapisz" Name="BtnSave" Grid.Row="0" Grid.ColumnSpan="2" Grid.Column="0" HorizontalAlignment="Left" Margin="80,0,0,0" VerticalAlignment="Top" Width="75" Click="BtnSave_Click"/>
         <Button Content="Odśwież" Name="BtnReload" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Left" Margin="10,0,0,0" Width="75" Click="BtnReload_Click"/>
         <Button Content="Exportuj" Name="ExportPdf" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Left" Margin="100, 0 ,0 ,0" Width="75" Click="ExportPdf_Click"/>
-        <GroupBox Header="Edges" Height="50" Grid.Row="1" Grid.Column="0" BorderBrush="Black" HorizontalContentAlignment="Left" VerticalContentAlignment="Top"  Margin="0,0" HorizontalAlignment="Right" Width="150" VerticalAlignment="Top">
+        <GroupBox Header="Vertices" Height="50" Grid.Row="1" Grid.Column="0" BorderBrush="Black" HorizontalContentAlignment="Left" VerticalContentAlignment="Top"  Margin="0,0" HorizontalAlignment="Right" Width="150" VerticalAlignment="Top">
             <Slider Name="VerticesSlider"  Width="Auto" Height="20" HorizontalAlignment="Stretch" Maximum="13" Value="8" Minimum="3" VerticalAlignment="Top" Margin="5,5,5,0" Interval="1" SmallChange="1" SelectionStart="3" AutoToolTipPrecision="1" TextOptions.TextHintingMode="Animated" IsSnapToTickEnabled="True" SelectionEnd="15"></Slider>
         </GroupBox>
         <GroupBox Header="Propability" Height="50" Grid.Row="2" Grid.Column="0" Margin="0,0,0,0" BorderBrush="Black" VerticalAlignment="Top">

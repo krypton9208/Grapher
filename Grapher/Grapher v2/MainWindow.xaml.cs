@@ -15,6 +15,8 @@ using System.Windows.Shapes;
 using System.Windows.Resources;
 using System.IO;
 using System.Runtime.InteropServices;
+
+using Image = System.Drawing.Image;
 using PdfSharp;
 using PdfSharp.Drawing;
 using PdfSharp.Pdf;
@@ -49,6 +51,21 @@ namespace Grapher_v2
             can.Children.Add(myLine);
 
         }
+        private void CreateLine2(Point a, Point b, Canvas can)
+        {
+
+            Line myLine = new Line();
+            myLine.Stroke = System.Windows.Media.Brushes.Red;
+            myLine.X1 = a.X;
+            myLine.X2 = b.X;
+            myLine.Y1 = a.Y;
+            myLine.Y2 = b.Y;
+            myLine.HorizontalAlignment = HorizontalAlignment.Center;
+            myLine.VerticalAlignment = VerticalAlignment.Center;
+            myLine.StrokeThickness = 2;
+            can.Children.Add(myLine);
+
+        }
 
         private void ReDraw()
         {
@@ -59,7 +76,8 @@ namespace Grapher_v2
                 Graphes[1] = new Graph(Graphes[0].VerticesNumber, SelectedType, Canvas2.ActualWidth, Canvas2.ActualHeight, GetTabFromRelations(Graphes[0].Verticles), 0);
                 DrawGraph(Canvas2, Graphes[1]);
                 Graphes[2] = new Graph(Graphes[0].VerticesNumber, SelectedType, Canvas2.ActualWidth, Canvas2.ActualHeight, GetTabFromRelations(Graphes[0].Verticles), 2);
-                DrawGraph(Canvas3, Graphes[2]);
+                DrawGraph(Canvas3, Graphes[0]);
+                DrawGraph2(Canvas3, Graphes[1]);
             }
         }
         private void DrawGraph(Canvas can, Graph g)
@@ -70,8 +88,27 @@ namespace Grapher_v2
             {
                 foreach (var subitem in item.GetRelations)
                 {
-                    // MessageBox.Show(Convert.ToString(subitem));
                     CreateLine(new Point(item.X, item.Y), new Point(g.Verticles[subitem].X, g.Verticles[subitem].Y), can);
+                }
+            }
+            foreach (var item in g.Verticles)
+            {
+                var ellipse = new Ellipse() { Width = 5, Height = 5, Stroke = new SolidColorBrush(Colors.Red), Fill = new SolidColorBrush(Colors.Red) };
+                Canvas.SetLeft(ellipse, item.X - 2.5);
+                Canvas.SetTop(ellipse, item.Y - 2.5);
+                can.Children.Add(ellipse);
+            }
+        }
+
+        private void DrawGraph2(Canvas can, Graph g)
+        {
+         
+
+            foreach (var item in g.Verticles)
+            {
+                foreach (var subitem in item.GetRelations)
+                {
+                    CreateLine2(new Point(item.X, item.Y), new Point(g.Verticles[subitem].X, g.Verticles[subitem].Y), can);
                 }
             }
             foreach (var item in g.Verticles)
@@ -311,6 +348,7 @@ namespace Grapher_v2
                 doc.Save(@dlg.FileName);
                 doc.Close();
             }
+
 
 
 
